@@ -1,4 +1,4 @@
-class jogador:
-    def __init__(self, jogando):
+class Jogador:
+    def __init__(self, nome):
         print('Instanciando jogador')
-        self.jogando = jogando
+        self.nome = nome
