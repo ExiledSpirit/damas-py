@@ -26,13 +26,33 @@ class Tabuleiro:
             jogador: Instância do jogador.
         """
     def validarMovimento(self, xInicial, yInicial, xFinal, yFinal, jogador):
-        print(self.casas[7 - xInicial][yInicial])
+        if (not self.__limitesTabuleiro__())):
+            return false
+        if (not self.__validarPosicaoInicial__()):
+            return false
+
+    def __validarPosicaoInicial__(self, xInicial, yInicial):
         if (self.casas[7 - xInicial][yInicial] == jogador.nome):
-            print('Movimento Válido')
-        else:
-            print('Movimento Inválido')
+            return true
+        return false
+
+    # Valida se algum dos eixos está fora do tabuleiro.
+    def __limitesTabuleiro__(self, xInicial, yInicial, xFinal, yFinal):
+        if (xInicial > 8 or xFinal > 8 or yInicial > 8 or yFinal > 8):
+            return false
+        return true
 
     def printarTabuleiro(self):
         for n in range(0, len(self.casas)):
-            print(n, self.casas[n], sep=' ')
+            print(n + 1, self.casas[n], sep=' ')
         print('   1  2  3  4  5  6  7  8')
+
+    def verificarVencedor(self):
+        for i in range(0, len(self.casas)):
+            if (1 in self.casas[i]):
+                return 1
+            elif (2 in self.casas[i]):
+                return 2
+            else:
+                return 0
+                

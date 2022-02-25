@@ -8,3 +8,7 @@ class Game:
         self.jogadorDois = Jogador(2)
         self.tabuleiro = Tabuleiro()
         self.tabuleiro.validarMovimento(3, 2, 2, 1, self.jogadorUm)
+        self.tabuleiro.verificarVencedor()
+
+    def reiniciarJogo(self):
+        self.tabuleiro.inicializarTabuleiro()
